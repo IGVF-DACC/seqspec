@@ -250,10 +250,9 @@ def plot_png(
     fsize = 15
     plt.rcParams.update({"font.size": fsize})
 
-    fig, _ = plt.subplots(figsize=(10, 1 * nmodes), nrows=nmodes)
+    fig, ax = plt.subplots(figsize=(10, 1 * nmodes), nrows=nmodes)
     title_offset = 0.98 if nmodes > 1 else 1.2
     fig.suptitle(assay, y=title_offset)
-
     rts = []
     for m, ax in zip(modes, fig.get_axes()):
         # Get leaves
@@ -294,7 +293,10 @@ def plot_png(
         ax.autoscale()
         ax.set(**{"xlim": (0, max(lengths)), "ylim": (0, 1)})
 
-        # Hide the spines
+        # since all axes use the same scale, set the xlim to be 0 to the max length
+        ax.set(**{"xlim": (0, max(lengths)), "ylim": (0, 1)})
+
+        # hide the spines
         for spine in ["right", "top", "left", "bottom"]:
             ax.spines[spine].set_visible(False)
         # Hide the axis and ticks and labels
