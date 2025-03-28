@@ -80,7 +80,6 @@ IGVF_ONLIST_SKIP_FILTERS = IGVF_FILTERS + [
     {"error_type": "check_onlist_files_exist", "error_object": "onlist"}
 ]
 
-
 def filter_errors(errors, filter_type):
     filters = None
     if filter_type == "igvf":
