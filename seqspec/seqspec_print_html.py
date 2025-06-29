@@ -7,8 +7,8 @@ It is used by the print command with the 'seqspec-html' format option.
 from typing import List, Optional
 
 from seqspec.Assay import Assay
-from seqspec.Region import Region, Onlist, complement_sequence
-from seqspec.Read import Read, File
+from seqspec.Read import File, Read
+from seqspec.Region import Onlist, Region, complement_sequence
 from seqspec.seqspec_print_utils import libseq
 
 
@@ -123,7 +123,7 @@ def regionsTemplate(regions: List[Region]) -> str:
         for idx, r in enumerate(regions)
     ]
     s = f"""<ol><li>
-    {'</li><li>'.join(templates)}
+    {"</li><li>".join(templates)}
     </li></ol>"""
     return s
 
@@ -185,7 +185,7 @@ def atomicFileTemplate(file: File) -> str:
 
 def readsTemplate(reads: List[Read]) -> str:
     s = f"""<ol><li>
-    {'</li><li>'.join([atomicReadTemplate(r) for r in reads])}
+    {"</li><li>".join([atomicReadTemplate(r) for r in reads])}
     </li></ol>"""
     return s
 
@@ -237,12 +237,7 @@ def htmlTemplate(spec: Assay) -> str:
       <div style="width: 75%; margin: 0 auto">
         <h6><a href="../../index.html">Back</a></h6>
         <div id="assay">
-          {headerTemplate(
-            spec.name,
-            spec.doi,
-            spec.description,
-            spec.modalities
-          )}
+          {headerTemplate(spec.name, spec.doi, spec.description, spec.modalities)}
         </div>
         <div id="library_spec">
           <h2>Final library</h2>

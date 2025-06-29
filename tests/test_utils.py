@@ -1,32 +1,45 @@
 import gzip
-from hashlib import md5
-from io import StringIO, BytesIO
 import os
+<<<<<<< HEAD
+=======
+from hashlib import md5
+from io import BytesIO, StringIO
+>>>>>>> f85f4b8 (changing Assay/Region/File/Read/etc classes to be derived from pydantic Base Class. this removes the need to specify yaml tags. These now get stripped. Changed formatter from black and flake8 to ruff.)
 from tempfile import TemporaryDirectory
-from requests import HTTPError
 from unittest import TestCase
 from unittest.mock import patch
 
+from requests import HTTPError
+
 from seqspec.Region import (
+<<<<<<< HEAD
     Region,
     RegionCoordinate,
     Onlist,
+=======
+    Onlist,
+    Region,
+    RegionCoordinate,
+>>>>>>> f85f4b8 (changing Assay/Region/File/Read/etc classes to be derived from pydantic Base Class. this removes the need to specify yaml tags. These now get stripped. Changed formatter from black and flake8 to ruff.)
     project_regions_to_coordinates,
 )
 from seqspec.utils import (
     get_remote_auth_token,
     load_spec_stream,
     map_read_id_to_regions,
-    write_read,
     read_local_list,
     read_remote_list,
+<<<<<<< HEAD
+=======
+    write_read,
+>>>>>>> f85f4b8 (changing Assay/Region/File/Read/etc classes to be derived from pydantic Base Class. this removes the need to specify yaml tags. These now get stripped. Changed formatter from black and flake8 to ruff.)
     yield_onlist_contents,
 )
 
 from .test_region import (
     region_rna_joined_dict,
-    region_rna_umi_dict,
     region_rna_linker_dict,
+    region_rna_umi_dict,
 )
 
 example_spec = """!Assay
@@ -227,6 +240,10 @@ class TestUtils(TestCase):
                 temp_list_filename,
                 "local",
                 fake_md5,
+<<<<<<< HEAD
+=======
+                "local",
+>>>>>>> f85f4b8 (changing Assay/Region/File/Read/etc classes to be derived from pydantic Base Class. this removes the need to specify yaml tags. These now get stripped. Changed formatter from black and flake8 to ruff.)
             )
             loaded_list = read_local_list(onlist1)
 
@@ -250,6 +267,10 @@ class TestUtils(TestCase):
                 temp_list_filename,
                 "local",
                 fake_md5,
+<<<<<<< HEAD
+=======
+                "local",
+>>>>>>> f85f4b8 (changing Assay/Region/File/Read/etc classes to be derived from pydantic Base Class. this removes the need to specify yaml tags. These now get stripped. Changed formatter from black and flake8 to ruff.)
             )
             loaded_list = read_local_list(onlist1)
 
@@ -274,7 +295,13 @@ class TestUtils(TestCase):
 
         with patch("requests.get", new=fake_request_get):
             url = "http://localhost/testlist.txt"
+<<<<<<< HEAD
             onlist1 = Onlist("123", "testlist.txt", "http", 300, url, "http", fake_md5)
+=======
+            onlist1 = Onlist(
+                "123", "testlist.txt", "http", 300, url, "http", fake_md5, "remote"
+            )
+>>>>>>> f85f4b8 (changing Assay/Region/File/Read/etc classes to be derived from pydantic Base Class. this removes the need to specify yaml tags. These now get stripped. Changed formatter from black and flake8 to ruff.)
             loaded_list = read_remote_list(onlist1)
 
             self.assertEqual(fake_onlist, loaded_list)

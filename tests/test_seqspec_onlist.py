@@ -1,6 +1,10 @@
+import os
 from argparse import ArgumentParser
 from contextlib import contextmanager
+<<<<<<< HEAD
 import os
+=======
+>>>>>>> f85f4b8 (changing Assay/Region/File/Read/etc classes to be derived from pydantic Base Class. this removes the need to specify yaml tags. These now get stripped. Changed formatter from black and flake8 to ruff.)
 from tempfile import TemporaryDirectory
 from unittest import TestCase
 from unittest.mock import patch
@@ -8,15 +12,20 @@ from unittest.mock import patch
 from seqspec.Region import Onlist
 from seqspec.seqspec_onlist import (
     find_list_target_dir,
+    join_multi_onlist,
+<<<<<<< HEAD
+    run_onlist_region,
+=======
     join_onlists,
     join_product_onlist,
-    join_multi_onlist,
-    run_onlist_region,
+>>>>>>> f85f4b8 (changing Assay/Region/File/Read/etc classes to be derived from pydantic Base Class. this removes the need to specify yaml tags. These now get stripped. Changed formatter from black and flake8 to ruff.)
     run_onlist_read,
+    run_onlist_region,
     setup_onlist_args,
     validate_onlist_args,
     write_onlist,
 )
+
 from .test_utils import example_spec, load_example_spec
 
 
@@ -72,6 +81,10 @@ class TestSeqspecOnlist(TestCase):
                 filename,
                 "local",
                 "d41d8cd98f00b204e9800998ecf8427e",
+<<<<<<< HEAD
+=======
+                "local",
+>>>>>>> f85f4b8 (changing Assay/Region/File/Read/etc classes to be derived from pydantic Base Class. this removes the need to specify yaml tags. These now get stripped. Changed formatter from black and flake8 to ruff.)
             )
 
             target_dir = find_list_target_dir([onlist1])
@@ -86,6 +99,10 @@ class TestSeqspecOnlist(TestCase):
             "http://localhost:9/temp.tsv",
             "http",
             "d41d8cd98f00b204e9800998ecf8427e",
+<<<<<<< HEAD
+=======
+            "remote",
+>>>>>>> f85f4b8 (changing Assay/Region/File/Read/etc classes to be derived from pydantic Base Class. this removes the need to specify yaml tags. These now get stripped. Changed formatter from black and flake8 to ruff.)
         )
 
         target_dir = find_list_target_dir([onlist1])
@@ -203,6 +220,7 @@ class TestSeqspecOnlist(TestCase):
                 print(remote_spec)
                 return load_example_spec(remote_spec)
 
+<<<<<<< HEAD
             with patch("seqspec.seqspec_onlist.load_spec", load_spec), patch(
                 "seqspec.seqspec_onlist.read_remote_list",
                 return_value="index_onlist.tsv",
@@ -210,6 +228,17 @@ class TestSeqspecOnlist(TestCase):
                 with patch("pathlib.Path.exists", return_value=True):
                     # Failed validation would raise an exception
                     validate_onlist_args(parser, args)
+=======
+            with (
+                patch("seqspec.seqspec_onlist.load_spec", load_spec) as loader,
+                patch(
+                    "seqspec.seqspec_onlist.read_remote_list",
+                    return_value="index_onlist.tsv",
+                ) as fake_remote_list,
+            ):
+                # Failed validation would raise an exception
+                validate_onlist_args(parser, args)
+>>>>>>> f85f4b8 (changing Assay/Region/File/Read/etc classes to be derived from pydantic Base Class. this removes the need to specify yaml tags. These now get stripped. Changed formatter from black and flake8 to ruff.)
 
     def test_write_onlist_no_double_spacing(self):
         # Make sure that joined onlists don't end up double spaced.

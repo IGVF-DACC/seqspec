@@ -3,13 +3,13 @@
 This module provides functionality to convert seqspec files into methods sections.
 """
 
+from argparse import ArgumentParser, Namespace, RawTextHelpFormatter
 from pathlib import Path
-from argparse import ArgumentParser, RawTextHelpFormatter, Namespace
 
-from seqspec.utils import load_spec
 from seqspec.Assay import Assay
+from seqspec.Read import File, Read
 from seqspec.Region import Region
-from seqspec.Read import Read, File
+from seqspec.utils import load_spec
 
 
 def setup_methods_args(parser) -> ArgumentParser:

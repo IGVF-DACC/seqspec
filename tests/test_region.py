@@ -1,11 +1,11 @@
 from unittest import TestCase
 
-from seqspec.Region import (
-    project_regions_to_coordinates,
-    Region,
-    Onlist,
-)
 from seqspec.Read import Read
+from seqspec.Region import (
+    Onlist,
+    Region,
+    project_regions_to_coordinates,
+)
 
 
 def region_rna_joined_dict(region_id, regions=[]):
@@ -210,6 +210,10 @@ class TestRegion(TestCase):
             list_url,
             list_urltype,
             list_md5sum,
+<<<<<<< HEAD
+=======
+            list_location,
+>>>>>>> f85f4b8 (changing Assay/Region/File/Read/etc classes to be derived from pydantic Base Class. this removes the need to specify yaml tags. These now get stripped. Changed formatter from black and flake8 to ruff.)
         )
 
         r = Region(
