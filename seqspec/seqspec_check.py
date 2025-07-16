@@ -80,7 +80,7 @@ def seqspec_check(
     Returns:
         List of error dictionaries
     """
-    errors = check(spec, spec_fn)
+    errors = check(spec, spec_fn, filter_type)
     if filter_type:
         errors = filter_errors(errors, filter_type)
     return errors
