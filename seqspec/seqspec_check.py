@@ -154,7 +154,6 @@ def check(spec: Assay, spec_fn: str, skip: str = None):
                 "error_message": f"{error.message} in {err_path}",
                 "error_object": err_elements[-1],
             }
-            # errors.append(f"[error {idx}] {error.message} in {err_path}]")
             errors.append(errobj)
         idx += 1
         return (errors, idx)
@@ -167,9 +166,6 @@ def check(spec: Assay, spec_fn: str, skip: str = None):
                 "error_message": f"modalities [{', '.join(spec.modalities)}] are not unique",
                 "error_object": "modalities",
             }
-            # errors.append(
-            #     f"[error {idx}] modalities [{', '.join(spec.modalities)}] are not unique"
-            # )
             errors.append(errobj)
             idx += 1
         return (errors, idx)
@@ -186,9 +182,6 @@ def check(spec: Assay, spec_fn: str, skip: str = None):
                     "error_message": f"region_id '{rid}' of the first level of the spec does not correspond to a modality [{', '.join(modes)}]",
                     "error_object": "region",
                 }
-                # errors.append(
-                #     f"[error {idx}] region_id '{rid}' of the first level of the spec does not correspond to a modality [{', '.join(modes)}]"
-                # )
                 errors.append(errobj)
                 idx += 1
         return (errors, idx)
@@ -263,9 +256,6 @@ def check(spec: Assay, spec_fn: str, skip: str = None):
                     "error_message": f"read_id '{read.read_id}' is not unique across all reads",
                     "error_object": "read",
                 }
-                # errors.append(
-                #     f"[error {idx}] read_id '{read.read_id}' is not unique across all reads"
-                # )
                 errors.append(errobj)
                 idx += 1
             else:
@@ -311,9 +301,6 @@ def check(spec: Assay, spec_fn: str, skip: str = None):
                     "error_message": f"primer_id '{read.primer_id}' and strand '{read.strand}' tuple is not unique across all reads",
                     "error_object": "read",
                 }
-                # errors.append(
-                #     f"[error {idx}] primer_id '{read.primer_id}' and strand '{read.strand}' tuple is not unique across all reads"
-                # )
                 errors.append(errobj)
                 idx += 1
             else:
@@ -336,9 +323,6 @@ def check(spec: Assay, spec_fn: str, skip: str = None):
                         "error_message": f"region_id '{rgn.region_id}' is not unique across all regions",
                         "error_object": "region",
                     }
-                    # errors.append(
-                    #     f"[error {idx}] region_id '{rgn.region_id}' is not unique across all regions"
-                    # )
                     errors.append(errobj)
                     idx += 1
                 else:
@@ -355,9 +339,6 @@ def check(spec: Assay, spec_fn: str, skip: str = None):
                     "error_message": f"read '{read.read_id}' modality '{read.modality}' does not exist in the modalities",
                     "error_object": "read",
                 }
-                # errors.append(
-                #     f"[error {idx}] '{read.read_id}' modality '{read.modality}' does not exist in the modalities"
-                # )
                 errors.append(errobj)
                 idx += 1
         return (errors, idx)
@@ -383,9 +364,6 @@ def check(spec: Assay, spec_fn: str, skip: str = None):
                     "error_message": f"'{read.read_id}' primer_id '{read.primer_id}' does not exist in the library_spec",
                     "error_object": "read",
                 }
-                # errors.append(
-                #     f"[error {idx}] '{read.read_id}' primer_id '{read.primer_id}' does not exist in the library_spec"
-                # )
                 errors.append(errobj)
                 idx += 1
         return (errors, idx)
@@ -402,9 +380,6 @@ def check(spec: Assay, spec_fn: str, skip: str = None):
                     "error_message": f"'{read.read_id}' primer_id '{read.primer_id}' does not exist as an atomic region in the library_spec for modality '{read.modality}'",
                     "error_object": "read",
                 }
-                # errors.append(
-                #     f"[error {idx}] '{read.read_id}' primer_id '{read.primer_id}' does not exist as an atomic region in the library_spec for modality '{read.modality}'"
-                # )
                 errors.append(errobj)
                 idx += 1
         return (errors, idx)
@@ -463,9 +438,6 @@ def check(spec: Assay, spec_fn: str, skip: str = None):
                     "error_message": f"'{rgn.region_id}' sequence_type is 'random' and sequence is not all X's",
                     "error_object": "region",
                 }
-                # errors.append(
-                #     f"[error {idx}] '{rgn.region_id}' sequence_type is 'random' and sequence is not all X's"
-                # )
                 errors.append(errobj)
                 idx += 1
             if rgn.sequence_type == "onlist" and not rgn.onlist:
@@ -474,9 +446,6 @@ def check(spec: Assay, spec_fn: str, skip: str = None):
                     "error_message": f"'{rgn.region_id}' sequence_type is 'onlist' and does not have an onlist object",
                     "error_object": "region",
                 }
-                # errors.append(
-                #     f"[error {idx}] '{rgn.region_id}' sequence_type is 'onlist' and does not have an onlist object"
-                # )
                 errors.append(errobj)
                 idx += 1
             if rgn.regions:
@@ -504,9 +473,6 @@ def check(spec: Assay, spec_fn: str, skip: str = None):
                     "error_message": f"'{rgn.region_id}' max_len is less than min_len",
                     "error_object": "region",
                 }
-                # errors.append(
-                #     f"[error {idx}] '{rgn.region_id}' max_len is less than min_len"
-                # )
                 errors.append(errobj)
                 idx += 1
             return (errors, idx)
@@ -536,9 +502,6 @@ def check(spec: Assay, spec_fn: str, skip: str = None):
                     "error_message": f"'{rgn.region_id}' sequence '{rgn.sequence}' has length {len(rgn.sequence)}, expected range ({rgn.min_len}, {rgn.max_len})",
                     "error_object": "region",
                 }
-                # errors.append(
-                #     f"[error {idx}] '{rgn.region_id}' sequence '{rgn.sequence}' has length {len(rgn.sequence)}, expected range ({rgn.min_len}, {rgn.max_len})"
-                # )
                 errors.append(errobj)
                 idx += 1
             return (errors, idx)
