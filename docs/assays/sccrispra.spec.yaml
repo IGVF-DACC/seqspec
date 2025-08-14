@@ -219,11 +219,9 @@ library_spec:
       min_len: 30
       max_len: 30
       onlist: null
-      regions: null
-    - !Region
-      parent_id: crispr_R2_001.fastq.gz
-      region_id: gRNA
-      region_type: gRNA
+      regions: []
+    - region_id: gRNA
+      region_type: sgrna_target
       name: Guide RNAs
       sequence_type: onlist
       sequence: NNNNNNNNNNNNNNNNNNNN

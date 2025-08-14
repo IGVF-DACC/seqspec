@@ -199,11 +199,9 @@ library_spec:
     min_len: 86
     max_len: 86
     onlist: null
-    regions: null
-    parent_id: crispr
-  - !Region
-    region_id: sgrna_target
-    region_type: crispr
+    regions: []
+  - region_id: sgrna_target
+    region_type: sgrna_target
     name: sgrna_target
     sequence_type: onlist
     sequence: NNNNNNNNNNNNNNNNNXXX
