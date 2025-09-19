@@ -447,6 +447,14 @@ def check(spec: Assay, spec_fn: str, skip: str = None):
                 # )
                 errors.append(errobj)
                 idx += 1
+            if rgn.sequence_type == "random" and rgn.regions:
+                errobj = {
+                    "error_type": "check_sequence_types",
+                    "error_message": f"'{rgn.region_id}' sequence_type is 'random' and contains subregions",
+                    "error_object": "region",
+                }
+                errors.append(errobj)
+                idx += 1
             if rgn.sequence_type == "random" and (
                 set(rgn.sequence) != {"X"}
                 or not (rgn.min_len <= len(rgn.sequence) <= rgn.max_len)
